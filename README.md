@@ -1,5 +1,4 @@
 # goldenroute
-Certainly! Below are step-by-step instructions for your site, structured as you requested:
 
 ---
 
