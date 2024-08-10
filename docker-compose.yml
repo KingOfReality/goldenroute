@@ -1,0 +1,32 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:latest
+    container_name: postgressContainer
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: lol666gg
+      POSTGRES_DB: mydatabase
+    ports:
+      - "5432:5432"
+    restart: always
+    volumes:
+      - pgdata:/var/lib/postgresql/data  
+
+  backend:
+    build: ./back
+    ports:
+      - "81:81"
+    depends_on:
+      - postgres
+    environment:
+      DATABASE_URL: postgresql://postgres:lol666gg@postgres:5432/mydatabase
+
+  frontend:
+    build: ./front
+    ports:
+      - "3000:80"
+
+volumes:
+  pgdata:

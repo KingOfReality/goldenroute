@@ -1,0 +1,25 @@
+datasource db {
+  provider = "postgresql"
+  url      = "postgresql://postgres:lol666gg@postgres:5432/mydatabase"
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+
+
+
+model Mission {
+  id                    Int     @id @default(autoincrement())
+  planeIcao24           String
+  planeCountry          String
+  planeLatitude         Float
+  planeLongitude        Float
+  planeSpeed            Float
+  threatLatitude        Float
+  threatLongitude       Float
+  threatRadius          Float
+  threatSpeed           Float
+  closeTime             Float
+}
