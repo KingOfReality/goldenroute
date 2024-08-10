@@ -2,7 +2,7 @@ FROM node:16
 
 WORKDIR /app
 
-RUN apt-get update && apt-get install -y netcat
+RUN apt-get update && apt-get install -y netcat dos2unix
 
 COPY package*.json ./
 
@@ -12,17 +12,19 @@ RUN npm install -g prisma
 
 COPY . .
 
+
 WORKDIR /app/db
 
 RUN npx prisma generate
 
-
 WORKDIR /app
 
-COPY entrypoint.sh /app/
+COPY entrypoint.sh /app/entrypoint.sh
+
+RUN dos2unix /app/entrypoint.sh
 
 RUN chmod +x /app/entrypoint.sh
 
-# ENTRYPOINT ["/app/entrypoint.sh"]
+ENTRYPOINT ["/app/entrypoint.sh"]
 
 CMD ["node", "app.js"]

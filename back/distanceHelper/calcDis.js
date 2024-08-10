@@ -17,7 +17,7 @@ const findNearestPlaneWithinRadius = async (threatPosition, radius) => {
             const [icao24, callsign, country, lastPosition, lastContact, longitude,latitude , altitude, onGround, velocity, heading, verticalRate, sensors, geoAltitude, squawk, spi, positionSource] = plane;
             if (latitude && longitude) {
                 const distanceMeters = geolib.getDistance(
-
+                    
                     { latitude: threatPosition.latitude, longitude: threatPosition.longitude },
                     { latitude, longitude }
                 );
